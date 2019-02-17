@@ -12,6 +12,17 @@ public class Polynomials {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+
+	
+	
+	public double bisectionMethod(String f, int min, int max) {
+		
+		
+		return 0;
+	}
+	
+	
 	public double newtonRaphson() {	
 		
 		return 0;
