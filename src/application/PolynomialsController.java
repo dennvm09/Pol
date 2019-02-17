@@ -54,16 +54,14 @@ public class PolynomialsController {
 	
 	@FXML
 	public void showFunction(ActionEvent e) {
-		
 		System.out.println("Hola");
 		saveFunction(e);
-		
 	}
 	
 	
 	public void saveFunction(ActionEvent e) {
 	
-		System.out.println("Hola");
+		//System.out.println("Hola");
 		String function = "";
 		
 		String x1 = txtx1.getText();
