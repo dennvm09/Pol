@@ -79,7 +79,8 @@ public class PolynomialsController {
 	@FXML
 	private TextField txtMax;
 	
-	
+	String function = "";
+	double root = 0.0;
 	
 
 	public void initialize() {}
@@ -181,7 +182,7 @@ public class PolynomialsController {
 	}
 	
 	public void saveFunction1(ActionEvent e) {
-		String function = "";
+//		String function = "";
 		String x1 = txtx11.getText();
 		String x2 = txtx21.getText();
 		String x3 = txtx31.getText();
@@ -215,7 +216,7 @@ public class PolynomialsController {
 		}else {
 			function += x7+"x^7+";
 		}
-		if(x6 != null) {
+		if(x6.isEmpty()) {
 			function += "";
 		}else {
 			function += x6+"x^6+";
@@ -257,9 +258,40 @@ public class PolynomialsController {
 			System.out.println("No has escrito ninguna función.");
 		}
 		
-		System.out.println(function);
+//		
+//		for(int i = 0; i < function.length(); i++) {
+//			if(function.charAt(i) == '+' && function.charAt(i+1) == '-') {
+//				function = function.substring(i, i+1)+'-';
+//				
+//			}
+//		}
+		
+		
 		lblPolynomial1.setText(function);
+		System.out.println(function);
+		calculateRoot_bisectionMethod(e);
 	}
 	
-	
+	public void calculateRoot_bisectionMethod(ActionEvent e) {
+		
+		
+		String f = "";
+		
+		
+		for(int i = 0; i < function.length(); i++) {
+			if(function.charAt(i) == '+' && function.charAt(i+1) == '-') {
+				f += function.substring(i-1, i);
+//				f.substring(i+1);
+			}else {
+				f += function.charAt(i);
+			}
+		}
+		
+		System.out.println("la nueva f: "+f);
+		
+		int min = Integer.parseInt(txtMin.getText());
+		int max = Integer.parseInt(txtMax.getText());
+		root = Main.getPolynomials().bisectionMethod(f, min, max);
+		txtRoots1.setText(String.valueOf(root));
+	}
 }

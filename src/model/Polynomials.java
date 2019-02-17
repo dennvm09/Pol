@@ -1,6 +1,6 @@
 package model;
 
-import java.util.ArrayList;
+
 
 public class Polynomials {
 
@@ -53,14 +53,14 @@ public class Polynomials {
 	
 	
 	
-	public static void main(String[] args) {
-		Polynomials p = new Polynomials();
-		String f = "x-4";
-		int min = 0, max = 5;
-		System.out.println("Hola");
-		System.out.println(p.bisectionMethod(f, min, max));
-		System.out.println("Hola");
-	}
+//	public static void main(String[] args) {
+//		Polynomials p = new Polynomials();
+//		String f = "x-4";
+//		int min = 0, max = 5;
+//		System.out.println("Hola");
+//		System.out.println(p.bisectionMethod(f, min, max));
+//		System.out.println("Hola");
+//	}
 	
 	
 //	 int getPolynomialGrade() {
