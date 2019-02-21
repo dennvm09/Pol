@@ -114,34 +114,7 @@ public class PolynomialsController {
 		lblI3.setVisible(false);
 	}
 	
-	public void selectNewton(ActionEvent e) {
-		lblP0.setVisible(true);
-		txtP0.setVisible(true);
-		btCalculate.setVisible(true);
-		
-		lblIntervalos.setVisible(false);
-		lblI1.setVisible(false);
-		lblI2.setVisible(false);
-		lblI3.setVisible(false);
-		txtMin.setVisible(false);
-		txtMax.setVisible(false);
-		var = 1;
-	}
-	
-	public void selectBisection(ActionEvent e) {
-		lblIntervalos.setVisible(true);
-		lblI1.setVisible(true);
-		lblI2.setVisible(true);
-		lblI3.setVisible(true);
-		txtMin.setVisible(true);
-		txtMax.setVisible(true);
-		btCalculate.setVisible(true);
-		
-		lblP0.setVisible(false);
-		txtP0.setVisible(false);
-		
-		var = -1;
-	}
+
 	
 
 	public void saveFunction(ActionEvent e) {
@@ -227,6 +200,36 @@ public class PolynomialsController {
 		
 		System.out.println(function);
 		lblPolynomial.setText(function);
+	}
+	
+// A PARTIR DE AQUI USO LOS METODOS
+	public void selectNewton(ActionEvent e) {
+		lblP0.setVisible(true);
+		txtP0.setVisible(true);
+		btCalculate.setVisible(true);
+		
+		lblIntervalos.setVisible(false);
+		lblI1.setVisible(false);
+		lblI2.setVisible(false);
+		lblI3.setVisible(false);
+		txtMin.setVisible(false);
+		txtMax.setVisible(false);
+		var = 1;
+	}
+	
+	public void selectBisection(ActionEvent e) {
+		lblIntervalos.setVisible(true);
+		lblI1.setVisible(true);
+		lblI2.setVisible(true);
+		lblI3.setVisible(true);
+		txtMin.setVisible(true);
+		txtMax.setVisible(true);
+		btCalculate.setVisible(true);
+		
+		lblP0.setVisible(false);
+		txtP0.setVisible(false);
+		
+		var = -1;
 	}
 	
 	public void saveFunction1(ActionEvent e) {
@@ -319,7 +322,7 @@ public class PolynomialsController {
 		System.out.println(function);
 		
 		if(var > 0) {
-			//HACE FALTA EL METODO DE NEWTON 
+			calculateRoot_newtonMethod(e); 
 		}else if(var < 0) {
 			calculateRoot_bisectionMethod(e);
 		}
@@ -327,11 +330,10 @@ public class PolynomialsController {
 		
 	}
 	
-	public void calculateRoot_bisectionMethod(ActionEvent e) {
-//		String f = "";
+	public void rewriteFunction() {
 		for(int i = 0; i < function.length(); i++) {
 			if(function.charAt(i) == '+' && function.charAt(i+1) == '-') {
-//				finalFunction += function.substring(i-1, i);
+
 				finalFunction += function.charAt(i+1);
 				i++;
 				
@@ -339,7 +341,22 @@ public class PolynomialsController {
 				finalFunction += function.charAt(i);
 			}
 		}
+	}
+	
+	public void calculateRoot_newtonMethod(ActionEvent e) {
+		rewriteFunction();
+		lblPolynomial1.setText(finalFunction);
+		System.out.println("la nueva f: "+finalFunction);
 		
+		int p0 = Integer.parseInt(txtP0.getText());
+		root = Main.getPolynomials().newtonRaphson(finalFunction, p0);
+		txtRoots1.setText(String.valueOf(root));
+		
+	}
+	
+	public void calculateRoot_bisectionMethod(ActionEvent e) {
+
+		rewriteFunction();
 		lblPolynomial1.setText(finalFunction);
 		System.out.println("la nueva f: "+finalFunction);
 		
