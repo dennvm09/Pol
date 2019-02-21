@@ -9,7 +9,6 @@ public class Function {
 	JEP j = new JEP();
 	
 	public Function(String function) {
-		
 		j.addVariable("x", 0);
 		j.addStandardConstants();
 		j.addStandardFunctions();
@@ -20,7 +19,6 @@ public class Function {
 			JOptionPane.showMessageDialog(null, "La función está mal ingresada"); 
 		}
 	}
-	
 	
 	public double f(double x) {
 		double result = 0;
@@ -33,6 +31,7 @@ public class Function {
 		
 		return result;
 	}
+	
 	
 //	public static void main(String[] args) {	
 //		Function fu = new Function("2*x^5+3*x^3+2*x^2-x+1");

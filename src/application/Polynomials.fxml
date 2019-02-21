@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:id="tabPaneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="366.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PolynomialsController">
+<TabPane fx:id="tabPaneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="366.0" prefWidth="711.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PolynomialsController">
   <tabs>
     <Tab fx:id="tabOption1" text="Opción 1">
       <content>
@@ -32,7 +32,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btSave" layoutX="504.0" layoutY="142.0" mnemonicParsing="false" onAction="#showFunction" prefHeight="39.0" prefWidth="82.0" text="Guardar">
+                  <Button fx:id="btSave" layoutX="504.0" layoutY="142.0" mnemonicParsing="false" onAction="#saveFunction1" prefHeight="39.0" prefWidth="82.0" text="Guardar">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Button>
@@ -66,12 +66,12 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="379.0" prefWidth="600.0">
                <children>
-                  <Label fx:id="lblGrade1" layoutX="21.0" layoutY="202.0" prefHeight="19.0" prefWidth="80.0" text="Polinomio: " textAlignment="CENTER">
+                  <Label fx:id="lblGrade1" layoutX="21.0" layoutY="197.0" prefHeight="19.0" prefWidth="80.0" text="Polinomio: " textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutY="10.0" prefHeight="32.0" prefWidth="600.0" text="CÁLCULO DE RAÍCES" textAlignment="JUSTIFY">
+                  <Label alignment="CENTER" layoutY="10.0" prefHeight="32.0" prefWidth="711.0" text="CÁLCULO DE RAÍCES" textAlignment="JUSTIFY">
                      <font>
                         <Font name="Britannic Bold" size="27.0" />
                      </font>
@@ -81,12 +81,16 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btSave1" layoutX="502.0" layoutY="136.0" mnemonicParsing="false" onAction="#showFunction" prefHeight="39.0" prefWidth="82.0" text="Guardar">
+                  <Button fx:id="btNewton" layoutX="612.0" layoutY="70.0" mnemonicParsing="false" onAction="#selectNewton" prefHeight="10.0" prefWidth="82.0" text="Newton">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="11.0" />
                      </font>
                   </Button>
-                  <TextArea fx:id="txtRoots1" layoutX="24.0" layoutY="269.0" prefHeight="30.0" prefWidth="538.0" />
+                  <TextArea fx:id="txtRoots1" editable="false" layoutX="24.0" layoutY="269.0" prefHeight="30.0" prefWidth="538.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextArea>
                   <ImageView fitHeight="36.0" fitWidth="560.0" layoutX="18.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/polynomials.jpeg" />
@@ -103,32 +107,58 @@
                   <TextField fx:id="txtx21" layoutX="440.0" layoutY="89.0" prefHeight="25.0" prefWidth="43.0" />
                   <TextField fx:id="txtx12" layoutX="495.0" layoutY="89.0" prefHeight="25.0" prefWidth="43.0" />
                   <TextField fx:id="txtx111" layoutX="545.0" layoutY="89.0" prefHeight="25.0" prefWidth="43.0" />
-                  <Label fx:id="lblPolynomial1" layoutX="101.0" layoutY="201.0" prefHeight="25.0" prefWidth="382.0" />
-                  <Label alignment="CENTER_RIGHT" layoutX="476.0" layoutY="319.0" prefHeight="17.0" prefWidth="122.0" text="Bisección" textAlignment="RIGHT">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="17.0" layoutY="130.0" text="Intervalos: ">
+                  <Label fx:id="lblPolynomial1" layoutX="101.0" layoutY="196.0" prefHeight="25.0" prefWidth="382.0" />
+                  <Label fx:id="lblIntervalos" layoutX="17.0" layoutY="130.0" text="Intervalos: ">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="99.0" layoutY="120.0" text="[">
+                  <Label fx:id="lblI1" layoutX="99.0" layoutY="120.0" text="[">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </Label>
                   <TextField fx:id="txtMin" layoutX="110.0" layoutY="130.0" prefHeight="25.0" prefWidth="23.0" />
                   <TextField fx:id="txtMax" layoutX="145.0" layoutY="130.0" prefHeight="25.0" prefWidth="23.0" />
-                  <Label layoutX="169.0" layoutY="120.0" text="]">
+                  <Label fx:id="lblI3" layoutX="169.0" layoutY="120.0" text="]">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Label layoutX="136.0" layoutY="120.0" text=";">
+                  <Label fx:id="lblI2" layoutX="136.0" layoutY="120.0" text=";">
                      <font>
                         <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblP0" layoutX="17.0" layoutY="130.0" text="P(0):">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtP0" layoutX="52.0" layoutY="130.0" prefHeight="25.0" prefWidth="23.0" />
+                  <Button fx:id="btBiseccion" layoutX="612.0" layoutY="106.0" mnemonicParsing="false" onAction="#selectBisection" prefHeight="12.0" prefWidth="82.0" text="Bisección">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btCalculate" layoutX="204.0" layoutY="128.0" mnemonicParsing="false" onAction="#saveFunction1" prefHeight="10.0" prefWidth="82.0" text="Calcular">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="614.0" layoutY="42.0" prefHeight="17.0" prefWidth="80.0" text="Métodos">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="612.0" layoutY="195.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="83.0" text="Aleatorio">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="614.0" layoutY="167.0" prefHeight="17.0" prefWidth="80.0" text="Opciones">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children></AnchorPane>

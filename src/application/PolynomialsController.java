@@ -11,7 +11,22 @@ import javafx.scene.control.TextField;
 
 public class PolynomialsController {
 	
-	
+	@FXML
+	private Button btNewton;
+	@FXML
+	private Button btBiseccion;
+	@FXML
+	private Label lblP0;
+	@FXML
+	private TextField txtP0;
+	@FXML
+	private Label lblIntervalos;
+	@FXML
+	private Label lblI1;
+	@FXML
+	private Label lblI2;
+	@FXML
+	private Label lblI3;
 	@FXML
 	private TabPane tabPaneMain;
 	@FXML
@@ -47,7 +62,7 @@ public class PolynomialsController {
 	@FXML
 	private TextArea txtRoots;
     @FXML
-    private Button btSave1;
+    private Button btCalculate;
     @FXML
     private TextArea txtRoots1;
     @FXML
@@ -80,24 +95,55 @@ public class PolynomialsController {
 	private TextField txtMax;
 	
 	String function = "";
+	String finalFunction = "";
 	double root = 0.0;
+	int var = 0;
+	
 	
 
-	public void initialize() {}
-	
-	@FXML
-	public void showFunction(ActionEvent e) {
-		System.out.println("Hola");
+	public void initialize() {
 		
-		
-		if(tabOption1.equals("Opcion 1")) {
-			saveFunction(e);
-		}else {
-			saveFunction1(e);
-		}
-		
+		btCalculate.setVisible(false);
+		lblP0.setVisible(false);
+		lblIntervalos.setVisible(false);
+		txtMin.setVisible(false);
+		txtMax.setVisible(false);
+		txtP0.setVisible(false);
+		lblI1.setVisible(false);
+		lblI2.setVisible(false);
+		lblI3.setVisible(false);
 	}
 	
+	public void selectNewton(ActionEvent e) {
+		lblP0.setVisible(true);
+		txtP0.setVisible(true);
+		btCalculate.setVisible(true);
+		
+		lblIntervalos.setVisible(false);
+		lblI1.setVisible(false);
+		lblI2.setVisible(false);
+		lblI3.setVisible(false);
+		txtMin.setVisible(false);
+		txtMax.setVisible(false);
+		var = 1;
+	}
+	
+	public void selectBisection(ActionEvent e) {
+		lblIntervalos.setVisible(true);
+		lblI1.setVisible(true);
+		lblI2.setVisible(true);
+		lblI3.setVisible(true);
+		txtMin.setVisible(true);
+		txtMax.setVisible(true);
+		btCalculate.setVisible(true);
+		
+		lblP0.setVisible(false);
+		txtP0.setVisible(false);
+		
+		var = -1;
+	}
+	
+
 	public void saveFunction(ActionEvent e) {
 	
 		//System.out.println("Hola");
@@ -177,13 +223,15 @@ public class PolynomialsController {
 			System.out.println("No has escrito ninguna función.");
 		}
 		
+		
+		
 		System.out.println(function);
 		lblPolynomial.setText(function);
 	}
 	
 	public void saveFunction1(ActionEvent e) {
 //		String function = "";
-		String x1 = txtx11.getText();
+		String x1 = txtx12.getText();
 		String x2 = txtx21.getText();
 		String x3 = txtx31.getText();
 		String x4 = txtx41.getText();
@@ -198,54 +246,54 @@ public class PolynomialsController {
 		if(x10.isEmpty()) {
 			function += "";
 		}else {
-			function += x10+"x^10+"; 	
+			function += x10+"*x^10+"; 	
 		}
 		
 		if(x9.isEmpty()) {
 			function += "";
 		}else {
-			function += x9+"x^9+";
+			function += x9+"*x^9+";
 		}
 		if(x8.isEmpty()) {
 			function += "";
 		}else {
-			function += x8+"x^8+";
+			function += x8+"*x^8+";
 		}
 		if(x7.isEmpty()) {
 			function += "";
 		}else {
-			function += x7+"x^7+";
+			function += x7+"*x^7+";
 		}
 		if(x6.isEmpty()) {
 			function += "";
 		}else {
-			function += x6+"x^6+";
+			function += x6+"*x^6+";
 		}
 		
 		if(x5.isEmpty()) {
 			function += "";
 		}else {
-			function += x5+"x^5+";
+			function += x5+"*x^5+";
 		}
 		if(x4.isEmpty()) {
 			function += "";
 		}else {
-			function += x4+"x^4+";
+			function += x4+"*x^4+";
 		}
 		if(x3.isEmpty()) {
 			function += "";
 		}else {
-			function += x3+"x^3+";
+			function += x3+"*x^3+";
 		}
 		if(x2.isEmpty()) {
 			function += "";
 		}else {
-			function += x2+"x^2+";
+			function += x2+"*x^2+";
 		}
 		if(x1.isEmpty()) {
 			function += "";
 		}else {
-			function += x1+"x+";
+			function += x1+"*x+";
 		}
 		if(x11.isEmpty()) {
 			function += "0";
@@ -267,31 +315,37 @@ public class PolynomialsController {
 //		}
 		
 		
-		lblPolynomial1.setText(function);
+//		lblPolynomial1.setText(function);
 		System.out.println(function);
-		calculateRoot_bisectionMethod(e);
+		
+		if(var > 0) {
+			//HACE FALTA EL METODO DE NEWTON 
+		}else if(var < 0) {
+			calculateRoot_bisectionMethod(e);
+		}
+		
+		
 	}
 	
 	public void calculateRoot_bisectionMethod(ActionEvent e) {
-		
-		
-		String f = "";
-		
-		
+//		String f = "";
 		for(int i = 0; i < function.length(); i++) {
 			if(function.charAt(i) == '+' && function.charAt(i+1) == '-') {
-				f += function.substring(i-1, i);
-//				f.substring(i+1);
+//				finalFunction += function.substring(i-1, i);
+				finalFunction += function.charAt(i+1);
+				i++;
+				
 			}else {
-				f += function.charAt(i);
+				finalFunction += function.charAt(i);
 			}
 		}
 		
-		System.out.println("la nueva f: "+f);
+		lblPolynomial1.setText(finalFunction);
+		System.out.println("la nueva f: "+finalFunction);
 		
 		int min = Integer.parseInt(txtMin.getText());
 		int max = Integer.parseInt(txtMax.getText());
-		root = Main.getPolynomials().bisectionMethod(f, min, max);
+		root = Main.getPolynomials().bisectionMethod(finalFunction, min, max);
 		txtRoots1.setText(String.valueOf(root));
 	}
 }
