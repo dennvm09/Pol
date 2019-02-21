@@ -24,8 +24,6 @@ public class Main extends Application {
 		return poly;
 	}
 	
-	
-	
 	@Override
 	public void start(Stage primaryStage) {
 		try {

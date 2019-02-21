@@ -2,11 +2,12 @@ package model;
 
 import javax.swing.JOptionPane;
 
+import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.JEP;
 
 public class Function {
 
-	JEP j = new JEP();
+	DJep j = new DJep();
 	
 	public Function(String function) {
 		j.addVariable("x", 0);
@@ -34,7 +35,7 @@ public class Function {
 	
 	
 //	public static void main(String[] args) {	
-//		Function fu = new Function("2*x^5+3*x^3+2*x^2-x+1");
+//		Function fu = new Function("2*x^4+3*x^3+2*x^2-x+1");
 //		System.out.println(fu.f(2));
 //	}
 }

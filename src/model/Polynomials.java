@@ -15,22 +15,33 @@ public class Polynomials {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Function getFunction() {
+		return function;
+	}
+
+	public void setFunction(Function function) {
+		this.function = function;
+	}
+
+	public void setX(int[] x) {
+		this.x = x;
+	}
 	
 	public double bisectionMethod(String f, int min, int max) {
 		System.out.println("Entró");
-		double mi, ma, mm;
-		double x = Double.NaN;
+		double mi = 0;
+		double ma = 0;
+		double mm = 0;
+		double x = 0;
 		int r = 0;
 		
 		function = new Function(f);
 		mi = function.f(min);
 		ma = function.f(max);
-		
-		if(mi * ma < 0) {
-			System.out.println("Entró 1");
+		if(Math.abs(mi * ma) > 0) {
 			do {
+				
 				r++;
-				System.out.println("Entró al do");
 				x = (mi + ma) / 2;
 				mm = function.f(x);
 				if(mi * mm < 0) {
@@ -43,19 +54,9 @@ public class Polynomials {
 		return x;
 	}
 	
+
+	public double newtonRaphson(String f, double p0) {	
 	
-	public Function getFunction() {
-		return function;
-	}
-
-
-	public void setFunction(Function function) {
-		this.function = function;
-	}
-
-
-	public double newtonRaphson(String f, int p0) {	
-		
 		DJep Function = new DJep();
         double root = 0;
         boolean cont = false;
@@ -63,9 +64,10 @@ public class Polynomials {
         double funx = 0;
         double p = 0;
         String derivade = "";
-        int iMax = 100;
+        int iMax = 200;
         int n = 0;
         double Es = 0.5 - (int)(Math.pow(10, 3));
+        System.out.println("Esta es ES: "+Es);
 
         Function.addStandardFunctions();
         Function.addStandardConstants();
@@ -103,12 +105,13 @@ public class Polynomials {
 
             p = p0 - (funx / derx);
             double error = (p - p0) / p;
-
-            if (error <= Es) {
+            
+            if (error <= Es || error == 0) {
+            	 
                 root = p;
                 cont = true;
             } else {
-                p0 = (int) p;
+                p0 = p;
             }
             n++;
         }
@@ -135,11 +138,7 @@ public class Polynomials {
 //	public static void main(String[] args) {
 //
 //		Polynomials p = new Polynomials();
-//	
-//		p.polynomialRandom();
-//		for (int i = 0; i < p.x.length; i++) {
-//			System.out.println(p.x[i]);
-//		}
+//		System.out.println("Holaaaaa"+p.bisectionMethod("x-4", 0, 5));
 //	}
 	
 

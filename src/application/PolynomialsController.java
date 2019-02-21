@@ -16,6 +16,8 @@ public class PolynomialsController {
 	@FXML
 	private Button btBiseccion;
 	@FXML
+	private Button btRandom;
+	@FXML
 	private Label lblP0;
 	@FXML
 	private TextField txtP0;
@@ -30,37 +32,35 @@ public class PolynomialsController {
 	@FXML
 	private TabPane tabPaneMain;
 	@FXML
-	private Tab tabOption1;
-	@FXML
 	private Tab tabOption2;
-	@FXML
-	private TextField txtx1;
-	@FXML
-	private TextField txtx2;
-	@FXML
-	private TextField txtx3;
-	@FXML
-	private TextField txtx4;
-	@FXML
-	private TextField txtx5;
-	@FXML
-	private TextField txtx6;
-	@FXML
-	private TextField txtx7;
-	@FXML
-	private TextField txtx8;
-	@FXML
-	private TextField txtx9;
-	@FXML
-	private TextField txtx10;
-	@FXML
-	private TextField txtx11;
-	@FXML
-	private Label lblPolynomial;
-	@FXML
-	private Button btSave;
-	@FXML
-	private TextArea txtRoots;
+//	@FXML
+//	private TextField txtx1;
+//	@FXML
+//	private TextField txtx2;
+//	@FXML
+//	private TextField txtx3;
+//	@FXML
+//	private TextField txtx4;
+//	@FXML
+//	private TextField txtx5;
+//	@FXML
+//	private TextField txtx6;
+//	@FXML
+//	private TextField txtx7;
+//	@FXML
+//	private TextField txtx8;
+//	@FXML
+//	private TextField txtx9;
+//	@FXML
+//	private TextField txtx10;
+//	@FXML
+//	private TextField txtx11;
+//	@FXML
+//	private Label lblPolynomial;
+//	@FXML
+//	private Button btSave;
+//	@FXML
+//	private TextArea txtRoots;
     @FXML
     private Button btCalculate;
     @FXML
@@ -99,7 +99,6 @@ public class PolynomialsController {
 	double root = 0.0;
 	int var = 0;
 	
-	
 
 	public void initialize() {
 		
@@ -112,94 +111,6 @@ public class PolynomialsController {
 		lblI1.setVisible(false);
 		lblI2.setVisible(false);
 		lblI3.setVisible(false);
-	}
-	
-
-	
-
-	public void saveFunction(ActionEvent e) {
-	
-		//System.out.println("Hola");
-		String function = "";
-		String x1 = txtx1.getText();
-		String x2 = txtx2.getText();
-		String x3 = txtx3.getText();
-		String x4 = txtx4.getText();
-		String x5 = txtx5.getText();
-		String x6 = txtx6.getText();
-		String x7 = txtx7.getText();
-		String x8 = txtx8.getText();
-		String x9 = txtx9.getText();
-		String x10 = txtx10.getText();
-		String x11 = txtx11.getText();
-		
-		if(x10.isEmpty()) {
-			function += "";
-		}else {
-			function += x10+"x^10+"; 	
-		}
-		
-		if(x9.isEmpty()) {
-			function += "";
-		}else {
-			function += x9+"x^9+";
-		}
-		if(x8.isEmpty()) {
-			function += "";
-		}else {
-			function += x8+"x^8+";
-		}
-		if(x7.isEmpty()) {
-			function += "";
-		}else {
-			function += x7+"x^7+";
-		}
-		if(x6 != null) {
-			function += "";
-		}else {
-			function += x6+"x^6+";
-		}
-		
-		if(x5.isEmpty()) {
-			function += "";
-		}else {
-			function += x5+"x^5+";
-		}
-		if(x4.isEmpty()) {
-			function += "";
-		}else {
-			function += x4+"x^4+";
-		}
-		if(x3.isEmpty()) {
-			function += "";
-		}else {
-			function += x3+"x^3+";
-		}
-		if(x2.isEmpty()) {
-			function += "";
-		}else {
-			function += x2+"x^2+";
-		}
-		if(x1.isEmpty()) {
-			function += "";
-		}else {
-			function += x1+"x+";
-		}
-		if(x11.isEmpty()) {
-			function += "0";
-		}else {
-			function += x11;
-		}
-		
-		if(x1.isEmpty() && x2.isEmpty() && x3.isEmpty() && x4.isEmpty() && x5.isEmpty()
-				&& x6.isEmpty() && x7.isEmpty() && x8.isEmpty() && x9.isEmpty() && x10.isEmpty() && x11.isEmpty()) {
-			System.out.println("No has escrito ninguna función.");
-		}
-		
-		
-		
-		System.out.println(function);
-		lblPolynomial.setText(function);
 	}
 	
 // A PARTIR DE AQUI USO LOS METODOS
@@ -215,6 +126,12 @@ public class PolynomialsController {
 		txtMin.setVisible(false);
 		txtMax.setVisible(false);
 		var = 1;
+		
+		lblPolynomial1.setText("");
+		finalFunction = "";
+		function = "";
+		lblPolynomial1.setText("");
+		txtRoots1.setText("");
 	}
 	
 	public void selectBisection(ActionEvent e) {
@@ -230,6 +147,10 @@ public class PolynomialsController {
 		txtP0.setVisible(false);
 		
 		var = -1;
+		finalFunction = "";
+		function = "";
+		lblPolynomial1.setText("");
+		txtRoots1.setText("");
 	}
 	
 	public void saveFunction1(ActionEvent e) {
@@ -364,5 +285,54 @@ public class PolynomialsController {
 		int max = Integer.parseInt(txtMax.getText());
 		root = Main.getPolynomials().bisectionMethod(finalFunction, min, max);
 		txtRoots1.setText(String.valueOf(root));
+	}
+
+	public void randomRoots(ActionEvent e) {
+		
+		int [] arr =  Main.getPolynomials().polynomialRandom();
+		int grade = arr.length;
+		for(int i = grade-1; i > 0 && grade > 0 ; i--) {
+			switch (grade) {
+			case 1:
+				int ii = (int) (Math.random() * 100 + 1);
+				txtx111.setText(String.valueOf(arr[ii]));
+				break;
+			case 2:
+				txtx12.setText(String.valueOf(arr[i]));
+				break;
+			case 3:
+				txtx21.setText(String.valueOf(arr[i]));
+				break;
+			case 4:
+				txtx31.setText(String.valueOf(arr[i]));
+				break;
+			case 5:
+				txtx41.setText(String.valueOf(arr[i]));
+				break;
+			case 6:
+				txtx51.setText(String.valueOf(arr[i]));
+				break;
+			case 7: 
+				txtx61.setText(String.valueOf(arr[i]));
+				break;
+			case 8: 
+				txtx71.setText(String.valueOf(arr[i]));
+				break;
+			case 9: 
+				txtx81.setText(String.valueOf(arr[i]));
+				break;
+			case 10: 
+				txtx91.setText(String.valueOf(arr[i]));
+				break;
+			case 11:
+				txtx101.setText(String.valueOf(arr[i]));
+				break;
+			default:
+				break;
+			}
+			grade--;
+		}
+		
+		
 	}
 }

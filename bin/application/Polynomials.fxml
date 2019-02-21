@@ -13,56 +13,7 @@
 
 <TabPane fx:id="tabPaneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="366.0" prefWidth="711.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PolynomialsController">
   <tabs>
-    <Tab fx:id="tabOption1" text="Opción 1">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="347.0" prefWidth="600.0">
-               <children>
-                  <Label fx:id="lblGrade" layoutX="28.0" layoutY="152.0" prefHeight="19.0" prefWidth="80.0" text="Polinomio: " textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="2.0" layoutY="14.0" prefHeight="32.0" prefWidth="600.0" text="CÁLCULO DE RAÍCES" textAlignment="JUSTIFY">
-                     <font>
-                        <Font name="Britannic Bold" size="27.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblCoeficientes" layoutX="31.0" layoutY="191.0" prefHeight="17.0" prefWidth="135.0" text="Raíces:" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="btSave" layoutX="504.0" layoutY="142.0" mnemonicParsing="false" onAction="#saveFunction1" prefHeight="39.0" prefWidth="82.0" text="Guardar">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font></Button>
-                  <TextArea fx:id="txtRoots" layoutX="31.0" layoutY="212.0" prefHeight="30.0" prefWidth="538.0" />
-                  <ImageView fitHeight="36.0" fitWidth="560.0" layoutX="20.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/polynomials.jpeg" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="txtx10" layoutX="13.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx9" layoutX="68.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx8" layoutX="122.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx7" layoutX="177.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx6" layoutX="231.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx5" layoutX="285.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx4" layoutX="340.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx3" layoutX="395.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx2" layoutX="448.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx1" layoutX="502.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <TextField fx:id="txtx11" layoutX="554.0" layoutY="91.0" prefHeight="25.0" prefWidth="43.0" />
-                  <Label fx:id="lblPolynomial" layoutX="130.0" layoutY="149.0" prefHeight="25.0" prefWidth="323.0" />
-                  <Label alignment="CENTER_RIGHT" layoutX="473.0" layoutY="265.0" prefHeight="17.0" prefWidth="122.0" text="Newton-raphson" textAlignment="RIGHT">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
-      </content>
-    </Tab>
-    <Tab fx:id="tabOption2" text="Opción 2">
+    <Tab fx:id="tabOption2" text="Raíces">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="379.0" prefWidth="600.0">
                <children>
@@ -151,7 +102,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Button layoutX="612.0" layoutY="195.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="83.0" text="Aleatorio">
+                  <Button fx:id="btRandom" layoutX="612.0" layoutY="195.0" mnemonicParsing="false" onAction="#randomRoots" prefHeight="24.0" prefWidth="83.0" text="Aleatorio">
                      <font>
                         <Font name="System Bold" size="11.0" />
                      </font>
